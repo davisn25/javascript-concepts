@@ -49,3 +49,22 @@ function filter(array, callback) {
 console.log(filterArray);
 console.log(forFilterArray);
 console.log(filter(array, function(x) { return x%2 == 0 }));
+
+/** Reduce **/
+reduceArray = array.reduce((a, b) => Math.max(a, b), 0);
+
+forReduceArray = 0;
+for (let i = 0; i < array.length; i++) {
+  forReduceArray = Math.max(forReduceArray, array[i]);
+}
+
+function reduce(array, callback, reduce = array[0]) {
+  for (let i = reduce == array[0] ? 1 : 0; i < array.length; i++) {
+    reduce = callback(reduce, array[i]);      
+  }
+  return reduce;
+}
+
+console.log(reduceArray);
+console.log(forReduceArray);
+console.log(reduce(array, function(a, b) { return Math.max(a, b) }, 1));
